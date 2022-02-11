@@ -40,7 +40,7 @@ const Content = styled.div`
   margin: 0 auto;
   max-width: 650px;
 
-  display: flex;
+  display: ;
   align-items: center;
   flex-direction: column;
   justify-content: center;
