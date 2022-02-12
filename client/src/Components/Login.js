@@ -1,8 +1,9 @@
 import React from 'react';
 import Banner from './Login/Banner.js';
 import Stream from './Login/Stream.js';
+import GroupWatch from './Login/GroupWatch.js';
+import MarvelStudio from './Login/MarvelStudio.js';
 import DownloadNow from './Login/DownloadNow.js';
-import GroupWatch from './Login/GroupWatch.js'
 
 import styled from 'styled-components';
 
@@ -13,6 +14,7 @@ const Login = () => {
             <Banner />
             <Stream />
             <GroupWatch />
+            <MarvelStudio />
             <DownloadNow />
           </Main>
         </>

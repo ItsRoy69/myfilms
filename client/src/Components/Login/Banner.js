@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import logo from '../Images/cta-logo-one.svg';
 import logo2 from '../Images/cta-logo-two.png';
+import loginImg from '../Images/loginbackground.jpg';
 
 const Banner = () => {
     return (
@@ -23,7 +24,7 @@ const Banner = () => {
     )
 };
 const Background = styled.section`
-  background:url("https://disney-clone-d1e27.web.app/images/login-background.jpg")center/cover no-repeat;
+  background: url(${loginImg})center/cover no-repeat;
   height: 95vh;
 
   display: flex;
