@@ -13,3 +13,89 @@ html{
   scroll-snap-type: Y mandatory;
   position: relative;
 }
+
+body {
+  color: #f9f9f9;
+  background-color: #040714;
+}
+
+a {
+  color: #f9f9f9;
+  text-decoration: none !important;
+}
+
+/*===========================================
+  ||||||Titles of Disney Plus button Themes||||||||
+  =========================================== */
+
+.btn-theme-disney {
+  padding: 0.5rem 3rem;
+  font-size: 17px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 2vh;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #0063e5;
+  border: 1px solid transparent;
+  color: #fff;
+  transition: all 0.7s ease-in-out;
+}
+.btn-theme-disney:hover {
+  background: #0099ff;
+}
+@media screen and (min-width: 550px) and (max-width: 767px) {
+  .btn-theme-disney {
+    padding: 0.5rem 2rem;
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 550px) {
+  .btn-theme-disney {
+    padding: 0.5rem 1.7rem;
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 280px) and (max-width: 375px) {
+  .btn-theme-disney {
+    padding: 0.5rem 1.5rem;
+    font-size: 10px;
+  }
+}
+
+/*===========================================
+  ||||||Titles of Disney Plus Website||||||||
+  =========================================== */
+
+.disney-titles {
+  font-size: 2.3rem;
+  font-weight: 500 !important;
+  line-height: 2.5rem;
+}
+@media screen and (min-width: 991px) and (max-width: 1200px) {
+  .disney-titles {
+    font-size: 1.8rem;
+    line-height: 2rem;
+  }
+}
+@media screen and (min-width: 550px) and (max-width: 991px) {
+  .disney-titles {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 550px) {
+  .disney-titles {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+  }
+}
+@media screen and (min-width: 280px) and (max-width: 375px) {
+  .disney-titles {
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+  }
+}
+/*===========================================
+  ||||||End of Titles||||||||
+  =========================================== */
