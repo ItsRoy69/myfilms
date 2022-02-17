@@ -14,22 +14,25 @@ import shutdownIcon from "../Components/Images/shutdown.svg";
 
 const Navbar = () => {
 
-    const [state, setstate] = useState(false);
+  const [Toggler, setToggler] = useState(false); // false -> notActive
+  const ifPopupOpen = () => setToggler(!Toggler); // true -> activeState
     return (
         <>
           <Nav>
-            <Navbrand><img src={logo} alt='disney/logo' /></Navbrand>
+            <Navbrand>
+              <NavLink to="/"><img src={logo} alt='disney/logo' /></NavLink>
+            </Navbrand>
             <MenuLinks>
-              <li><NavLink to="" className="nav-link"><img src={homeIcon} alt='' /><span>HOME</span></NavLink></li>
+              <li><NavLink to="/home" className="nav-link"><img src={homeIcon} alt='' /><span>HOME</span></NavLink></li>
               <li><NavLink to="" className="nav-link"><img src={searchIcon} alt='' /><span>SEARCH</span></NavLink></li>
               <li><NavLink to="" className="nav-link"><img src={watchIcon} alt='' /><span>WATCHLIST</span></NavLink></li>
               <li><NavLink to="" className="nav-link"><img src={origIcon} alt='' /><span>ORIGINALS</span></NavLink></li>
               <li><NavLink to="" className="nav-link"><img src={movieIcon} alt='' /><span>MOVIES</span></NavLink></li>
               <li><NavLink to="" className="nav-link"><img src={seriesIcon} alt='' /><span>SERIES</span></NavLink></li>
             </MenuLinks>
-            <UserAuth><img src={admin} alt="admin/disney" /></UserAuth>
+            <UserAuth><img src={admin} onClick={ifPopupOpen} alt="admin/disney" /></UserAuth>
 
-            <PopupMenu>
+            <PopupMenu activeState={Toggler}>
               <li><NavLink to="" className="nav-link"><img src={homeIcon} alt='' /><span>Home</span></NavLink></li>
               <li><NavLink to="" className="nav-link"><img style={{width: '0.8rem', height: '0.8rem'}} src={shutdownIcon} alt='' /><span>Sign Out</span></NavLink></li>
             </PopupMenu>
@@ -146,7 +149,7 @@ const PopupMenu = styled.div`
   border: 1.3px solid rgba(151, 151, 151, 1);
   box-shadow: rgb(0 0 0 / 50%) 0px 0px 18px 0px;
 
-  display: flex;
+  display: ${(event) => (event.activeState ? "flex" : "none")};
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
