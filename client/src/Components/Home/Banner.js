@@ -92,6 +92,17 @@ const Wrap = styled.div`
       height: 100%;
       object-fit: cover;
       border-radius: 4x;
+
+      @media screen and (min-width: 375px) and (max-width: 550px) {
+          width: 100%;
+          height: 15vh;
+          object-fit: fill;
+        }
+      @media screen and (min-width: 280px) and (max-width: 375px) {
+          width: 100%;
+          height: 17vh;
+          object-fit: fill;
+        }
     }
 
     &:hover {

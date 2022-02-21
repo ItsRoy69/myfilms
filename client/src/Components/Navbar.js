@@ -47,8 +47,11 @@ const Nav = styled.nav`
   justify-content: space-between;
   flex-direction: row;
   min-height: 9vh;
-
   padding: 0.5rem 3rem;
+
+  @media screen and (min-width: 280px) and (max-width: 991px) {
+    justify-content: space-between;
+  }
 `;
 
 const Navbrand = styled.div`
@@ -65,6 +68,10 @@ const Navbrand = styled.div`
 `;
 
 const MenuLinks = styled.div`
+
+  @media screen and (min-width: 280px) and (max-width: 991px) {
+      display: none;
+    }
 
   display: flex;
   align-items: center;
