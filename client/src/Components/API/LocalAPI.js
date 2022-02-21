@@ -7,6 +7,8 @@ import slide4 from "../Images/slide4.jpg";
 import slide5 from "../Images/slide5.jpg";
 import slide6 from "../Images/slide6.jpg";
 import slide7 from "../Images/slide7.jpg";
+import slide8 from "../Images/slide8.jpg";
+import slide9 from "../Images/slide9.jpg";
 
 /* ////////////////////////////////////////////////////////     */
 // Brand API
@@ -35,6 +37,8 @@ export const bannerAPI = [
   { bannerImg: slide5 },
   { bannerImg: slide6 },
   { bannerImg: slide7 },
+  { bannerImg: slide8 },
+  { bannerImg: slide9 },
 ];
 
 export const brandAPI = [
