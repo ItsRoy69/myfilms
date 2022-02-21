@@ -4,14 +4,7 @@ import styled from 'styled-components';
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import slide1 from "../Images/slide1.jpg";
-import slide2 from "../Images/slide2.jpg";
-import slide3 from "../Images/slide3.jpg";
-import slide4 from "../Images/slide4.jpg";
-import slide5 from "../Images/slide5.jpg";
-import slide6 from "../Images/slide6.jpg";
-import slide7 from "../Images/slide7.jpg";
+import { bannerAPI } from '../API/LocalAPI.js';
 
 const Banner = () => {
   var settings = {
@@ -26,27 +19,14 @@ const Banner = () => {
         <>
 
           <CarouselImg {...settings}>{/*First Dot = Value, Second dot = Index, Third dot = Array*/}
-            <Wrap>
-              <div><img src={slide1} alt="slide/img" /></div>
-            </Wrap>
-            <Wrap>
-              <div><img src={slide2} alt="slide/img" /></div>
-            </Wrap>
-            <Wrap>
-              <div><img src={slide3} alt="slide/img" /></div>
-            </Wrap>
-            <Wrap>
-              <div><img src={slide4} alt="slide/img" /></div>
-            </Wrap>
-            <Wrap>
-              <div><img src={slide5} alt="slide/img" /></div>
-            </Wrap>
-            <Wrap>
-              <div><img src={slide6} alt="slide/img" /></div>
-            </Wrap>
-            <Wrap>
-              <div><img src={slide7} alt="slide/img" /></div>
-            </Wrap>
+            {
+              bannerAPI && bannerAPI.map((value, index) => (
+                  <Wrap key={index}>
+                    <div><img src={value.bannerImg} alt="banner/img"/></div>
+                  </Wrap>
+                ))
+            }
+
           </CarouselImg>
         </>
     )
