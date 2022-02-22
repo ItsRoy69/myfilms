@@ -8,27 +8,27 @@ const Footer = () => {
           <Section>
             <Container>
                 <FooterBrand><img src={Logo} alt="Disney/Logo" /></FooterBrand>
-                <Nav>
-                       <li><p>English</p></li>
-                       <li><p>English</p></li>
-                       <li><p>English</p></li>
-                       <li><p>English</p></li>
-                       <li><p>English</p></li><li><p>English</p></li>
-                       <li><p>English</p></li>
+                  <Nav>
+                  <li><p>English</p></li>
+                   <li><p>Subscriber Agreement</p></li>
+                   <li><p>Privacy Policy</p></li>
+                   <li><p>Your California Privacy</p></li>
+                   <li><p>Do Not Sell My Info</p></li>
+                   <li><p>Children's Online Privacy Policy</p></li>
+                   <li><p>Closed Captioning</p></li>
+                   <li><p>Interset-Based-Ads</p></li>
+                   <li><p>Supported Devices</p></li>
+                   <li><p>Help</p></li>
+                   <li><p>Gift Disney+</p></li>
+                   <li><p>About Us</p></li>
+                   <li><p>Disney+ Partner Program</p></li>
+                   <li><p>Premiere Access</p></li>
+                   <li><p>The Disney Bundle</p></li>
+               </Nav>
+               <Copyright>
+                   <p>© DisneyPlus - ItsRoy69. All Right Reserved 2021</p>
 
-                       <li><p>English</p></li>
-                       <li><p>English</p></li>
-                       <li><p>English</p></li>
-
-
-
-
-                </Nav>
-
-
-
-
-
+               </Copyright>
             </Container>
           </Section>
         </>
@@ -71,7 +71,7 @@ const Nav = styled.nav`
   li{
       list-style: none;
   }
-  
+
   p{
       padding: 0.5rem;
       font-size: 0.9rem;
@@ -88,4 +88,13 @@ const Nav = styled.nav`
   }
 `;
 
+const Copyright = styled.div`
+    text-align: center;
+    p {
+        font-weight: 400 !important;
+        @media screen and (max-width: 550px) {
+            font-size: 0.95rem;
+        }
+    }
+`
 export default Footer

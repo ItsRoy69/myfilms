@@ -68,7 +68,6 @@ const Section = styled.section`
     font-weight: 300 !important;
     text-shadow: 0.1rem 0.1rem 0.1rem rgba(255, 255, 255, 0.1);
     margin: 2vh 0 1vh 2rem;
-
     @media screen and (max-width: 991px) {
       font-size: 1.1rem;
     }
@@ -80,81 +79,74 @@ const Section = styled.section`
 const Carousel = styled(Slider)`
   /* dots */
   ul li button {
-      &::before {
-        font-size: 11px;
-        color: rgb(150, 158, 171);
-      }
+    &:before {
+      font-size: 11px;
+      color: rgb(150, 158, 171);
+    }
   }
-
   ul li.slick-active button {
-    &::before {
-      color: #fff !important;
+    &:before {
+      color: white !important;
     }
   }
-
-  /* left - right button*/
+  /* left right button */
   & > button {
-      opacity: 0;
-      z-index: 1500;
-      width: 5vw;
-      height: 100%;
-
-      &:hover {
-        opacity: 1;
-        z-index: 2000;
-        transition: opacity 0.2s ease 0s;
-      }
-    }
-/* slick-list */
-  .slick-prev {
-      left: -75px;
-    }
-
-    .slick-next {
-      right: -75px;
-    }
-
-    .slick-list {
-      overflow: visible;
-    }
-
-`;
-const Wrap = styled.div`
-  position: relative;
-
-  div{
-    border-radius: 4px;
-    padding: 5px;
-    display: block;
-    opacity: 1;
-    z-index: 2000;
-    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
-                rgb(0 0 0 / 73%) 0px 16px 10px -10px;
-    cursor: default;
-
-    img {
-      width: 100%;
-      height: 15vh;
-      object-fit: fill;
-      border-radius: 4x;
-      opacity: 1;
-      z-index: 1500;
-      position: relative;
-
-      @media screen and (max-width: 991px) {
-        width: 100%;
-        object-fit: cover;
-        height: auto;
-      }
-    }
-
+    opacity: 0;
+    z-index: 1;
+    width: 5vw;
+    height: 100%;
     &:hover {
       opacity: 1;
-      z-index: 2000;
-      padding: 0;
-      border: 4px solid rgba(249, 249, 249, 0.8);
-      transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+      z-index: 2;
+      transition: opacity 0.2s ease 0s;
     }
   }
+  .slick-prev {
+    left: -75px;
+  }
+  .slick-next {
+    right: -75px;
+  }
+  .slick-list {
+    overflow: visible;
+  }`;
+
+const Wrap = styled.div`
+position: relative;
+ div {
+   border-radius: 4px;
+   padding: 4px;
+   display: block;
+   opacity: 1;
+   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+     rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+   object-position: center;
+   z-index: 2000;
+ }
+ img {
+   width: 100%;
+   display: block;
+   height: auto;
+   object-fit: fill;
+   width: 100%;
+   z-index: 1500;
+   position: relative;
+   border-radius: 4px;
+   @media screen and (max-width: 991px) {
+     width: 100%;
+     object-fit: cover;
+     height: auto;
+   }
+ }
+ &:hover {
+   box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
+     rgb(0 0 0 / 72%) 0px 30px 22px -10px;
+   transform: scale(1.05);
+   border-color: rgba(249, 249, 249, 0.8);
+   z-index: 2000;
+   opacity: 1;
+   padding: 1px;
+   transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+ }
 `;
 export default Original

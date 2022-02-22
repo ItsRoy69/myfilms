@@ -13,7 +13,7 @@ const GroupWatch = () => {
                           <h1 className="disney-titles">GroupWatch</h1>
                           <li>Watch togather, even when apart</li>
                           <li>Stream with up to 6 friends</li>
-                          <li>Pause, rewind, react togather</li>
+                          <li>Pause, rewind, react together</li>
                           <li>Easy setup and Sharing</li>
                       </Content>
                   </Container>

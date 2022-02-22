@@ -28,12 +28,22 @@ const Home = () => {
     )
 }
 const Container = styled.main`
-  min-height: calc(100vh - 250px);
-  padding: 0 calc(3.5vw + 5px);
-  position: relative;
-  overflow-x: hidden;
-  display: block;
-  background: url(${bgImg})center/cover no-repeat;
+min-height: calc(100vh - 250px);
+ padding: 0 calc(3.5vw + 5px);
+ position: relative;
+ overflow-x: hidden;
+ display: block;
+ 
+ &:before {
+   background: url(${bgImg}) center center / cover no-repeat fixed;
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: -10;
+ }
 `;
 
 export default Home;
