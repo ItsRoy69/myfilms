@@ -28,12 +28,12 @@ const Home = () => {
     )
 }
 const Container = styled.main`
-min-height: calc(100vh - 250px);
+ min-height: calc(100vh - 250px);
  padding: 0 calc(3.5vw + 5px);
  position: relative;
  overflow-x: hidden;
  display: block;
- 
+
  &:before {
    background: url(${bgImg}) center center / cover no-repeat fixed;
    content: "";
