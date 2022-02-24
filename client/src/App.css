@@ -8,7 +8,7 @@
 }
 
 html{
-  scroll-behavior: smooth;
+  scroll-behavior: smth;
   scroll-snap-align: start;
   scroll-snap-type: Y mandatory;
   position: relative;
