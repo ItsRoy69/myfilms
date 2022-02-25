@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import dbConfig from "../Firebase.js";
+
 import Banner from './Home/Banner.js';
 import Brand from './Home/Brand.js';
 import Original from './Home/Original.js';
@@ -12,6 +14,13 @@ import Popular from './Home/Popular.js';
 import bgImg from "../Components/Images/background.png";
 
 const Home = () => {
+
+  useEffect(() => {
+    dbConfig.collection("Movies").onSnapshot((snapshot) => {
+    console.log(snapshot);
+  })
+}, [])
+
     return (
         <>
           <Container>
