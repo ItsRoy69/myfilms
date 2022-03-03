@@ -8,8 +8,11 @@ $ npm i firebase
 $ npm install -g node-firestore-import-export
 -------------------------------------------------------------
 Go to APIcall Folder
-$ firestore-import -aprivateKey.json -b MoviesAPI.json [API calling inside firebase]
-
+$ firestore-import -a privateKey.json -b MoviesAPI.json [API calling inside firebase]
+-------------------------------------------------------------
+Client
+$ npm i react-redux
+$ npm install @reduxjs/toolkit
 ```
 
 Go to firebase and give project name as "myfilms" -> Continue -> Toggle off the Google Analytics -> Continue -> Project Overview -> Project Settings -> Create new webapp by clicking "</>" icon -> Register with App Nickname 'myfilms' -> Click on checkbox of 'Set up Firebase Hosting for this app' -> Click 'Register App' -> Next -> Continue to console -> Scroll down to messenger Web App -> Click on 'Config Part' and copy the code and paste in 'Firebase.js'

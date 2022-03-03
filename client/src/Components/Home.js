@@ -15,9 +15,18 @@ import bgImg from "../Components/Images/background.png";
 
 const Home = () => {
 
+  let populars =[];
+  let hollywoods =[];
+  let newtos =[];
+  let kidsTvs =[];
+  let originals =[];
+  let trending =[];
+
   useEffect(() => {
     dbConfig.collection("Movies").onSnapshot((snapshot) => {
-    console.log(snapshot);
+    snapshot.docs.map((doc) => {
+      console.log(doc.data());
+      })
   })
 }, [])
 
