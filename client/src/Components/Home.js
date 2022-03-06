@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import dbConfig from "../Firebase.js";
+import { setDisneyMovies } from './Redux/Reducers/MovieReducer.js';
+import { useDispatch } from 'react-redux';
 
 import Banner from './Home/Banner.js';
 import Brand from './Home/Brand.js';
@@ -14,6 +16,8 @@ import Popular from './Home/Popular.js';
 import bgImg from "../Components/Images/background.png";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
   let populars =[];
   let hollywoods =[];
   let newTos =[];
@@ -49,7 +53,14 @@ const Home = () => {
                         break;
                 }
             });
-
+            dispatch(setDisneyMovies({
+                            popular: populars,
+                            hollywood: hollywoods,
+                            newTo: newTos,
+                            kidsTv: kidsTvs,
+                            original: originals,
+                            trending: trending
+                        }))
                     });
                 }, []);
 
@@ -74,6 +85,8 @@ const Container = styled.main`
  position: relative;
  overflow-x: hidden;
  display: block;
+ top: 10px;
+ margin-bottom: 11vh;
 
  &:before {
    background: url(${bgImg}) center center / cover no-repeat fixed;

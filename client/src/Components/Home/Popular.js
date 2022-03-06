@@ -2,13 +2,15 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { selectPopular } from '../Redux/Reducers/MovieReducer';
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import luca from "../Images/LUCA-2.png";
-
 const Popular = () => {
+  const movies = useSelector(selectPopular);
+
   var settings = {
     dots: false,
     infinite: true,
@@ -29,30 +31,17 @@ const Popular = () => {
             <Section>
               <h1>Popular</h1>
               <Carousel {...settings}>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
-                <Wrap>
-                  <div><NavLink to=" "><img src={luca} alt="img/slide" /></NavLink></div>
-                </Wrap>
+                {
+                    movies && movies.map((val, index) => (
+                        <Wrap key={index}>
+                        <div>
+                            <NavLink className="slide-img" to="">
+                              <img src={val.CardImg} alt={val.CardImg} />
+                            </NavLink>
+                        </div>
+                        </Wrap>
+                    ))
+                }
               </Carousel>
             </Section>
         </>

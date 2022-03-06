@@ -8,8 +8,6 @@ import { selectOriginal } from '../Redux/Reducers/MovieReducer';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import luca from "../Images/LUCA-2.png";
-
 const Original = () => {
   const movies = useSelector(selectOriginal);
 
@@ -36,7 +34,11 @@ const Original = () => {
                 {
                     movies && movies.map((val, index) => (
                         <Wrap key={index}>
-                            <NavLink className="slide-img" to=""><img src={val.CardImg} alt={val.CardImg} /></NavLink>
+                        <div>
+                            <NavLink className="slide-img" to="">
+                              <img src={val.CardImg} alt={val.CardImg} />
+                            </NavLink>
+                        </div>
                         </Wrap>
                     ))
                 }
