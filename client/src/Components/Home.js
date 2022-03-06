@@ -14,10 +14,9 @@ import Popular from './Home/Popular.js';
 import bgImg from "../Components/Images/background.png";
 
 const Home = () => {
-
   let populars =[];
   let hollywoods =[];
-  let newtos =[];
+  let newTos =[];
   let kidsTvs =[];
   let originals =[];
   let trending =[];
@@ -25,10 +24,34 @@ const Home = () => {
   useEffect(() => {
     dbConfig.collection("Movies").onSnapshot((snapshot) => {
     snapshot.docs.map((doc) => {
-      console.log(doc.data());
-      })
-  })
-}, [])
+      // console.log(doc.data().type);
+
+      switch (doc.data().type) {
+                    case "popular":
+                        populars = [...populars, { id: doc.id, ...doc.data() }];
+                        break;
+                    case "hollywood":
+                        hollywoods = [...hollywoods, { id: doc.id, ...doc.data() }];
+                        break;
+                    case "newTo":
+                        newTos = [...newTos, { id: doc.id, ...doc.data() }];
+                        break;
+                    case "kidsTv":
+                        kidsTvs = [...kidsTvs, { id: doc.id, ...doc.data() }];
+                        break;
+                    case "original":
+                        originals = [...originals, { id: doc.id, ...doc.data() }];
+                        break;
+                    case "trending":
+                        trending = [...trending, { id: doc.id, ...doc.data() }];
+                        break;
+                    default:
+                        break;
+                }
+            });
+
+                    });
+                }, []);
 
     return (
         <>

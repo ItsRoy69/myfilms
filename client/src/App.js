@@ -10,13 +10,15 @@ import Detail from './Components/Detail.js';
 const App = () => {
     return (
       <div className='App' >
-        <Navbar />
-        <Routes>
-            <Route exact path="/" element={ <Login/>} ></Route>
-            <Route exact path="/home" element={ <Home/>} ></Route>
-            <Route exact path="/detail/:id" element={ <Detail/>} ></Route>
-        </Routes>
-        <Footer />
+        <Router>
+          <Navbar />
+          <Routes>
+              <Route exact path="/" element={ <Login/>} ></Route>
+              <Route exact path="/home" element={ <Home/>} ></Route>
+              <Route exact path="/detail/:id" element={ <Detail/>} ></Route>
+          </Routes>
+          <Footer />
+        </Router>
       </div>
     )
 }
