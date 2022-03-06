@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
+import { useParams } from 'react-router-dom';
+import dbConfig from '../Firebase.js';
 
 import playIcon from "../Components/Images/play-icon-black.png";
 import trailIcon from "../Components/Images/play-icon-white.png";
 import groupIcon from "../Components/Images/group-icon.png";
 
 const Detail = () => {
+  const { id } = useParams();
+   const [Detail, setDetail] = useState();
+   useEffect(() => {
+       dbConfig.collection("Movies").doc(id).get().then((doc) => {
+           if (doc.exists) {
+               setDetail(doc.data());
+           } else {
+               console.log("Detail can't fetched");
+           }
+       })
+   }, [id]);
+
     return (
         <>
         <Background>
