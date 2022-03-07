@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import admin from "../Components/Images/admin.jpg";
 import logo from "../Components/Images/logo.svg";
 import homeIcon from "../Components/Images/home-icon.svg";
 import searchIcon from "../Components/Images/search-icon.svg";
