@@ -35,7 +35,7 @@ const Trending = () => {
                     movies && movies.map((val, index) => (
                         <Wrap key={index}>
                         <div>
-                            <NavLink className="slide-img" to="">
+                            <NavLink className="slide-img" to={`/detail/${val.id}`}>
                               <img src={val.CardImg} alt={val.CardImg} />
                             </NavLink>
                         </div>

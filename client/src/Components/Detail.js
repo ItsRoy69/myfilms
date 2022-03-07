@@ -8,56 +8,59 @@ import trailIcon from "../Components/Images/play-icon-white.png";
 import groupIcon from "../Components/Images/group-icon.png";
 
 const Detail = () => {
-  const { id } = useParams();
-   const [Detail, setDetail] = useState();
+   const { id } = useParams();
+   const [State, setState] = useState();
    useEffect(() => {
-       dbConfig.collection("Movies").doc(id).get().then((doc) => {
-           if (doc.exists) {
-               setDetail(doc.data());
-           } else {
-               console.log("Detail can't fetched");
-           }
-       })
+     dbConfig.collection("Movies").doc(id).get().then((doc) => {
+         if (doc.exists) {
+             setState(doc.data());
+         } else {
+             console.log("Detail can't fetched");
+         }
+     })
    }, [id]);
 
     return (
         <>
-        <Background>
-          <Container>
-            <Content>
-              <ImageTitle>
-                <img src="https://occ-0-4704-58.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUOau78xVvWb7gagB7UlKDbxSqJ7x9cq5M8si8BAvitKMKNUCa_XdvBMg8N-Lwf-r-DpP4Y8YjchuQax1vPRbz-04R-tyLcG4X4d.png?r=6dd" alt="detail/imagetitle"/>
-              </ImageTitle>
-              <h2>2019 | 7+ | 1h 47m | US Movies</h2>
-              <p>The adventures of Master Builder Emmet continue! When Lego Duplo aliens kidnap Lucy and Batman, he must head out into space to save the day.</p>
+        {
+          State && (
+            <>
+              <Background style={{background: `linear-Gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2),rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url(${State.BackgroundImg})`,backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat'}}>
+                <Container>
+                  <Content>
+                    <ImageTitle>
+                      <img src={State.TitleImg} alt="detail/imgtitle"/>
+                    </ImageTitle>
+                    <h2>{State.Genres}</h2>
+                    <p>{State.Description}</p>
 
-              <ButtonGroup>
-                  <PlayBtn>
-                    <img src={playIcon} alt="play/icon" />
-                    <span>PLAY</span>
-                  </PlayBtn>
-                  <TrailerBtn>
-                    <img src={trailIcon} alt="trail/icon" />
-                    <span>TRAILER</span>
-                  </TrailerBtn>
-                  <AddtoPlaylistBtn>
-                    <span></span>
-                    <span></span>
-                  </AddtoPlaylistBtn>
-                  <GroupWatchBtn>
-                    <img src={groupIcon} alt="group/icon" />
-                  </GroupWatchBtn>
-              </ButtonGroup>
-            </Content>
-          </Container>
-        </Background>
-        </>
-    )
-}
+                    <ButtonGroup>
+                        <PlayBtn>
+                          <img src={playIcon} alt="play/icon" />
+                          <span>PLAY</span>
+                        </PlayBtn>
+                        <TrailerBtn>
+                          <img src={trailIcon} alt="trail/icon" />
+                          <span>TRAILER</span>
+                        </TrailerBtn>
+                        <AddtoPlaylistBtn>
+                          <span></span>
+                          <span></span>
+                        </AddtoPlaylistBtn>
+                        <GroupWatchBtn>
+                          <img src={groupIcon} alt="group/icon" />
+                        </GroupWatchBtn>
+                    </ButtonGroup>
+                  </Content>
+                </Container>
+              </Background>
+             </>
+         )}
+     </>
+ );
+};
 
 const Background = styled.main`
-  background: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.4)),
-  url("https://occ-0-4704-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABULERER_SpN4aHU8RiDI2msvkcAZ0b9gO3HuL_CK5IUogPCezZLZFGIXf_X266VUi0-uq_hept845Sof_GSxwMMf71JP.jpg?r=120") center/cover no-repeat;
   min-height: 95vh;
 
   @media screen and (min-width: 991px) and (max-width: 1200px) {
@@ -244,12 +247,13 @@ const TrailerBtn = styled(PlayBtn)`
   border: 1px solid rgb(249, 249, 249, 1);
   text-transform: uppercase;
   span {
-    color: #fff !important;
-  }
+   color: #fff !important;
+
   &:hover {
-    color: #000 !important;
+    color: #fff !important;
     background: rgb(198, 198, 198);
   }
+}
 `;
 const AddtoPlaylistBtn = styled.button`
    height: 41px;

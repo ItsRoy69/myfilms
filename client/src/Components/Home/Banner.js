@@ -34,6 +34,8 @@ const Banner = () => {
 
 const CarouselImg = styled(Slider)`
   /* dots */
+  opacity: 1;
+  z-index: 1500;
   ul li button {
       &::before {
         font-size: 11px;

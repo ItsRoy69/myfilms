@@ -48,6 +48,8 @@ const Nav = styled.nav`
   flex-direction: row;
   min-height: 9vh;
   padding: 0.5rem 3rem;
+  opacity: 1;
+  z-index: 2500;
 
   @media screen and (min-width: 280px) and (max-width: 991px) {
     justify-content: space-between;
@@ -160,6 +162,8 @@ const PopupMenu = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  opacity: 1;
+  z-index: 2500;
 
   li{
       width: 100%;
