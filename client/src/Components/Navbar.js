@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import admin from "../Components/Images/admin.jpg";
 import logo from "../Components/Images/logo.svg";
@@ -12,41 +12,99 @@ import movieIcon from "../Components/Images/movie-icon.svg";
 import seriesIcon from "../Components/Images/series-icon.svg";
 import shutdownIcon from "../Components/Images/shutdown.svg";
 
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserName, selectUserPhoto, setLoginState, setLogOutState } from './Redux/Reducers/UserReducer';
+import { auth, provider } from '../Firebase.js';
+
 const Navbar = () => {
 
   const [Toggler, setToggler] = useState(false); // false -> notActive
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const ifPopupOpen = () => setToggler(!Toggler); // true -> activeState
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
+
+
+  const SignIn = () =>{
+      auth.signInWithPopup(provider).then((result)=>{
+          let user = result.user;
+          dispatch(setLoginState({
+              name: user.displayName,
+              email: user.email,
+              photo: user.photoURL
+          }));
+          navigate("/home") //we are pushing back to Home Screen
+      });
+  }
+
+  const SignOut = () =>{
+      auth.signOut().then(()=>{
+          dispatch(setLogOutState());
+          navigate("/"); //we are pushing back to LoginScreen
+      });
+  }
+
     return (
         <>
           <Nav>
             <Navbrand>
               <NavLink to="/"><img src={logo} alt='disney/logo' /></NavLink>
             </Navbrand>
-            <MenuLinks>
-              <li><NavLink to="/home" className="nav-link"><img src={homeIcon} alt='' /><span>HOME</span></NavLink></li>
-              <li><NavLink to="" className="nav-link"><img src={searchIcon} alt='' /><span>SEARCH</span></NavLink></li>
-              <li><NavLink to="" className="nav-link"><img src={watchIcon} alt='' /><span>WATCHLIST</span></NavLink></li>
-              <li><NavLink to="" className="nav-link"><img src={origIcon} alt='' /><span>ORIGINALS</span></NavLink></li>
-              <li><NavLink to="" className="nav-link"><img src={movieIcon} alt='' /><span>MOVIES</span></NavLink></li>
-              <li><NavLink to="" className="nav-link"><img src={seriesIcon} alt='' /><span>SERIES</span></NavLink></li>
-            </MenuLinks>
-            <UserAuth><img src={admin} onClick={ifPopupOpen} alt="admin/disney" /></UserAuth>
+            {
+              !userName ? (
+                          <LoginButton onClick={SignIn}>Log in</LoginButton>
+                      ) : <>
+                            <MenuLinks>
+                              <li><NavLink to="/home" className="nav-link"><img src={homeIcon} alt='' /><span>HOME</span></NavLink></li>
+                              <li><NavLink to="" className="nav-link"><img src={searchIcon} alt='' /><span>SEARCH</span></NavLink></li>
+                              <li><NavLink to="" className="nav-link"><img src={watchIcon} alt='' /><span>WATCHLIST</span></NavLink></li>
+                              <li><NavLink to="" className="nav-link"><img src={origIcon} alt='' /><span>ORIGINALS</span></NavLink></li>
+                              <li><NavLink to="" className="nav-link"><img src={movieIcon} alt='' /><span>MOVIES</span></NavLink></li>
+                              <li><NavLink to="" className="nav-link"><img src={seriesIcon} alt='' /><span>SERIES</span></NavLink></li>
+                            </MenuLinks>
+                            <UserAuth><img src={userPhoto} onClick={ifPopupOpen} alt="admin/disney" /></UserAuth>
 
-            <PopupMenu activeState={Toggler}>
-              <li><NavLink to="" className="nav-link"><img src={homeIcon} alt='' /><span>Home</span></NavLink></li>
-              <li><NavLink to="" className="nav-link"><img style={{width: '0.8rem', height: '0.8rem'}} src={shutdownIcon} alt='' /><span>Sign Out</span></NavLink></li>
-            </PopupMenu>
+                            <PopupMenu activeState={Toggler}>
+                              <li><NavLink to="/home" className="nav-link"><img src={homeIcon} alt='' /><span>Home</span></NavLink></li>
+                              <li><NavLink to="" className="nav-link"><img style={{width: '0.8rem', height: '0.8rem'}} src={shutdownIcon} alt='' /><span>Sign Out</span></NavLink></li>
+                            </PopupMenu>
+                      </>
+            }
+
           </Nav>
         </>
     )
 };
+
+const LoginButton = styled.button`
+    font-size: 0.90rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 16px;
+    border-radius: 4px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid #f9f9f9;
+    transition: all 0.2s ease 0s;
+    background-color: rgba(0, 0, 0, 0.6);
+    @media screen and (min-width: 280px) and (max-width: 550px){
+        font-size: 0.8rem;
+        padding: 4px 13px;
+    }
+    &:hover {
+        background-color: #f9f9f9;
+        color: #000;
+        border-color: transparent;
+    }
+`;
 
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  min-height: 9vh;
+  min-height: 7vh;
   padding: 0.5rem 3rem;
   opacity: 1;
   z-index: 2500;
