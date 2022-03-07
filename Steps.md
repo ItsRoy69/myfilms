@@ -19,3 +19,14 @@ Go to firebase and give project name as "myfilms" -> Continue -> Toggle off the 
 
 
 Project settings -> Click 'Service accounts' -> Click 'Generate Private Key' -> Download the json file in "client" -> Rename it as 'privateKey' -> Add another json file 'MoviesAPI'
+
+Authentication -> Sign-in method -> Google -> Enable -> Save.
+
+Hosting -> 
+```
+$ npm install -g firebase-tools
+$ firebase login
+$ firebase init
+$ firebase deploy
+
+````
