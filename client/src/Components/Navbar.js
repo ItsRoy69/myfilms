@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -25,6 +25,19 @@ const Navbar = () => {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
+  useEffect(() => {
+        auth.onAuthStateChanged(async (user)=>{
+            if(user){
+                dispatch(setLoginState({
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL
+                }));
+                navigate("/home");               // after refreshing tha page user again back to login
+            }
+        })
+    }, [dispatch, navigate]);
+
 
   const SignIn = () =>{
       auth.signInWithPopup(provider).then((result)=>{
@@ -41,7 +54,7 @@ const Navbar = () => {
   const SignOut = () =>{
       auth.signOut().then(()=>{
           dispatch(setLogOutState());
-          navigate("/"); //we are pushing back to LoginScreen
+          navigate("/"); //we are pushing back to Login Screen
       });
   }
 
@@ -66,8 +79,8 @@ const Navbar = () => {
                             <UserAuth><img src={userPhoto} onClick={ifPopupOpen} alt="admin/disney" /></UserAuth>
 
                             <PopupMenu activeState={Toggler}>
-                              <li><NavLink to="/home" className="nav-link"><img src={homeIcon} alt='' /><span>Home</span></NavLink></li>
-                              <li><NavLink to="" className="nav-link"><img style={{width: '0.8rem', height: '0.8rem'}} src={shutdownIcon} alt='' /><span>Sign Out</span></NavLink></li>
+                              <li><NavLink to="/home" className="nav-link"><img src={homeIcon} alt={homeIcon} /><span>Home</span></NavLink></li>
+                              <li><NavLink onClick={SignOut} className="nav-link" to="/home"><img style={{width: '0.8rem', height: '0.8rem'}} src={shutdownIcon} alt={shutdownIcon} /><span>Sign Out</span></NavLink></li>
                             </PopupMenu>
                       </>
             }
